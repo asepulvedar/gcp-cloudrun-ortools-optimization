@@ -2,12 +2,19 @@
 
 This project aims to optimize the cost of a diet while meeting specific nutritional requirements using linear programming.
 
+## Key Features
+
+- **Linear Programming**: Uses OR-Tools to solve the diet optimization problem.
+- **Cloud Deployment**: Includes scripts to deploy and run the optimization on Google Cloud Run.
+- **Data Handling**: Outputs results in pandas DataFrames for easy analysis.
+
 ## Project Structure
 
 - `diet.py`: Main script that defines and solves the diet optimization problem.
 - `run.sh`: Shell script to execute the job using Google Cloud Run.
 - `deploy.sh`: Shell script to deploy the Cloud Run job.
-- `README.md`: Project documentation (this file).
+- `requirements.txt`: List of dependencies.
+- `README.md`: Project documentation.
 
 ## Requirements
 
