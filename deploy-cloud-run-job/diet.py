@@ -102,21 +102,6 @@ data = [
 
 
 def solve(nutrients):
-    """Entry point of the program.
-    nunutrients_parameters:
-    Example:
-    nutrients = [
-        ["Calories (kcal)", 3],
-        ["Protein (g)", 70],
-        ["Calcium (g)", 0.8],
-        ["Iron (mg)", 12],
-        ["Vitamin A (KIU)", 5],
-        ["Vitamin B1 (mg)", 1.8],
-        ["Vitamin B2 (mg)", 2.7],
-        ["Niacin (mg)", 18],
-        ["Vitamin C (mg)", 75],]
-    """
-
     # Instantiate the data problem.
     # Nutrient minimums.
 
@@ -192,24 +177,35 @@ def solve(nutrients):
     # Get the nutrients from args
 if __name__ == "__main__":
 
-    #os.environ['NUTRIENTS'] = '[["Calories (kcal)", 3], ["Protein (g)", 70], ["Calcium (g)", 0.8], ["Iron (mg)", 12], ["Vitamin A (KIU)", 5], ["Vitamin B1 (mg)", 1.8], ["Vitamin B2 (mg)", 2.7], ["Niacin (mg)", 18], ["Vitamin C (mg)", 75]]'
     # Get the nutrients from the environment variable
     OPTIMIZATION_ID = os.getenv('OPTIMIZATION_ID',1)
-    if not OPTIMIZATION_ID:
-        print("NUTRIENTS environment variable is required")
-        sys.exit(1)
+    CALORIES = os.getenv('CALORIES',3)
+    PROTEIN = os.getenv('PROTEIN',70)
+    CALCIUM = os.getenv('CALCIUM',0.8)
+    IRON = os.getenv('IRON',12)
+    VITAMIN_A = os.getenv('VITAMIN_A',5)
+    VITAMIN_B1 = os.getenv('VITAMIN_B1',1.8)
+    VITAMIN_B2 = os.getenv('VITAMIN_B2',2.7)
+    NIACIN = os.getenv('NIACIN',18)
+    VITAMIN_C = os.getenv('VITAMIN_C',75)
 
+    # Prepare the array of nutrients
     nutrients = [
-        ["Calories (kcal)", 3],
-        ["Protein (g)", 70],
-        ["Calcium (g)", 0.8],
-        ["Iron (mg)", 12],
-        ["Vitamin A (KIU)", 5],
-        ["Vitamin B1 (mg)", 1.8],
-        ["Vitamin B2 (mg)", 2.7],
-        ["Niacin (mg)", 18],
-        ["Vitamin C (mg)", 75], ]
+        ["Calories (kcal)", CALORIES],
+        ["Protein (g)", PROTEIN],
+        ["Calcium (g)", CALCIUM],
+        ["Iron (mg)", IRON],
+        ["Vitamin A (KIU)", VITAMIN_A],
+        ["Vitamin B1 (mg)", VITAMIN_B1],
+        ["Vitamin B2 (mg)", VITAMIN_B2],
+        ["Niacin (mg)", NIACIN],
+        ["Vitamin C (mg)", VITAMIN_C], ]
 
-    solve(nutrients)
+    # Solve the problem
+    df_nutrients, df_foods = solve(nutrients)
+
+    # Add the optimization ID to the results
+    df_nutrients['Optimization ID'] = OPTIMIZATION_ID
+    df_foods['Optimization ID'] = OPTIMIZATION_ID
 
     print("Optimization ID:", OPTIMIZATION_ID, " - Nutrients:", nutrients)

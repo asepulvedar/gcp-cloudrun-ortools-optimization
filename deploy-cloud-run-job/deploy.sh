@@ -1,7 +1,7 @@
 # Description: Deploy the Cloud Run job
 # Variables:
-export PROJECT_ID=YOUR_PROJECT_ID
-export REGION=us-central1
+export PROJECT_ID=your-project-id
+export REGION=your-region
 export IMAGE_NAME=us-central1-docker.pkg.dev/$PROJECT_ID/docker-repo/ortools-diet
 export JOB_NAME=diet-optimization-realtime
 
